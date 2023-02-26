@@ -1,6 +1,7 @@
 # Desafio GO - FullCycle
 
 ## Build
+** Nome da Imagem: ** redmater/fullcycle-go
 
 `` docker build -t redmater/fullcycle-go .``
 
