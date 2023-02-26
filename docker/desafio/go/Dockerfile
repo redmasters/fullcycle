@@ -1,15 +1,15 @@
-FROM golang:1.20-alpine AS buildando
-
-ADD . /src
+FROM golang:alpine AS buildando
 
 WORKDIR /src
+COPY . .
 
-RUN go mod init goapp && go build -o goapp
+RUN go build -o /src goapp.go
 
-FROM alpine:latest
+FROM scratch
 
-WORKDIR /app
+WORKDIR /
 
 COPY --from=buildando /src/goapp /app
 
-ENTRYPOINT ./goapp
+EXPOSE 8080
+ENTRYPOINT ["/app"]
