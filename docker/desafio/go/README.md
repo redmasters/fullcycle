@@ -2,11 +2,11 @@
 
 ## Build
 
-``sh docker build -t redmater/fullcycle-go .``
+`` docker build -t redmater/fullcycle-go .``
 
 ## Pull
 
-``sh docker pull redmater/fullcycle-go``
+`` docker pull redmater/fullcycle-go``
 
 ## Executar container
-``sh docker run --rm redmater/go-fullcycle``
+`` docker run --rm redmater/go-fullcycle``
