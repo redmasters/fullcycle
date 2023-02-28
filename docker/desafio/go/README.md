@@ -11,3 +11,5 @@
 
 ## Executar container
 `` docker run --rm redmater/go-fullcycle``
+
+✅ - Aprovado
