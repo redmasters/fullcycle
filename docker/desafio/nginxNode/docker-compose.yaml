@@ -22,6 +22,9 @@ services:
     volumes:
       - ./node:/usr/src/app
     tty: true
+    command:
+      - node
+      - index.js
     ports:
       - "3000:3000"
     depends_on:
