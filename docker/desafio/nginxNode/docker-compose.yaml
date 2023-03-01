@@ -28,7 +28,8 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     networks:
       - node-network
 
@@ -37,6 +38,11 @@ services:
     command: --innodb-use-native-aio=0
     container_name: db
     restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
