@@ -16,18 +16,20 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "redmater/hello-go:angels"
+          image: "redmater/hello-go:v6.1"
           envFrom:
             - configMapRef:
                 name: goserver-env
-          #          env:
-          #            - name: NAME1
-          #              valueFrom:
-          #                configMapKeyRef:
-          #                  name: goserver-env
-          #                  key: NAME1
-          #            - name: NAME2
-          #              valueFrom:
-          #                configMapKeyRef:
-          #                  name: goserver-env
-          #                  key: NAME2
+
+          volumeMounts:
+            - name: config
+              mountPath: "/myfamily"
+              readOnly: true
+
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+              - key: members
+                path: "myfamily.txt"
