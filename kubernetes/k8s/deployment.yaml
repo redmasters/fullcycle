@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: goserver
-  replicas: 5
+  replicas: 1
   template:
     metadata:
       labels:
@@ -16,4 +16,18 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "redmater/hello-go:v3"
+          image: "redmater/hello-go:angels"
+          envFrom:
+            - configMapRef:
+                name: goserver-env
+          #          env:
+          #            - name: NAME1
+          #              valueFrom:
+          #                configMapKeyRef:
+          #                  name: goserver-env
+          #                  key: NAME1
+          #            - name: NAME2
+          #              valueFrom:
+          #                configMapKeyRef:
+          #                  name: goserver-env
+          #                  key: NAME2

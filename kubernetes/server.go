@@ -1,5 +1,7 @@
 package main
 import "net/http"
+import "fmt"
+import "os"
 
 
 func main() {
@@ -9,5 +11,10 @@ func main() {
 
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-  w.Write([]byte("<h1>Hello World!!!!</h1>"))
+
+  name1:= os.Getenv("NAME1")
+  name2:= os.Getenv("NAME2")
+
+  fmt.Fprintf(w, "%s e %s sao duas angels", name1, name2)
+
 }
